@@ -8,7 +8,7 @@ This project was inspired by [SquidGod](https://www.youtube.com/@SquidGodDev).
 
 ## How to run (Windows)
 
-Open the X64 Native Tools Command Prompt for VS 2019, navigate into the build directory using:
+Open the X64 Native Tools Command Prompt for VS 2019, navigate into the build directory inside the project using (if none is available, please create one):
 
 ```bash
   cd /[path]/build
@@ -16,6 +16,7 @@ Open the X64 Native Tools Command Prompt for VS 2019, navigate into the build di
 and run:
 
 ```bash
+  cmake .. -G "NMake Makefiles"
   nmake
 ```
 There should be a file called DataOverSound.pdx. Open the playdate simulator and drag and drop the DataOverSound_V2.pdx in to it.
