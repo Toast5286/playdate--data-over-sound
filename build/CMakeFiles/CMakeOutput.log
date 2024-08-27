@@ -1,0 +1,286 @@
+The system is: Windows - 10.0.19045 - AMD64
+Compiling the C compiler identification source file "CMakeCCompilerId.c" succeeded.
+Compiler: C:/Program Files (x86)/Microsoft Visual Studio/2019/BuildTools/VC/Tools/MSVC/14.29.30133/bin/Hostx64/x64/cl.exe 
+Build flags: 
+Id flags:  
+
+The output was:
+0
+Microsoft (R) C/C++ Optimizing Compiler Versão 19.29.30154 para x64
+Copyright (C) Microsoft Corporation. Todos os direitos reservados.
+
+CMakeCCompilerId.c
+Microsoft (R) Incremental Linker Version 14.29.30154.0
+Copyright (C) Microsoft Corporation.  All rights reserved.
+
+/out:CMakeCCompilerId.exe 
+CMakeCCompilerId.obj 
+
+
+Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "CMakeCCompilerId.exe"
+
+Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "CMakeCCompilerId.obj"
+
+The C compiler identification is MSVC, found in "C:/Users/Gil Beirao/Documents/GitHub/playdate--data-over-sound/build/CMakeFiles/3.20.6/CompilerIdC/CMakeCCompilerId.exe"
+
+Checking whether the ASM compiler is MSVC using "-?" matched "Microsoft":
+Microsoft (R) C/C++ Optimizing Compiler Versão 19.29.30154 para x64
+Copyright (C) Microsoft Corporation. Todos os direitos reservados.
+
+                         OPÇÔES DE COMPILADOR DE C/C++
+
+
+                              -OTIMIZAÇÃO-
+
+/O1 otimizações máximas (favorecer o espaço)
+/O2 otimizações máximas (favorecer a velocidade)
+/Ob<n> expansão embutida (padrão n=0)   /Od desabilitar otimizações (padrão)
+/Og habilitar otimização global         /Oi[-] habilitar funções intrínsecas
+/Os favorecer espaço de código          /Ot favorecer velocidade de código
+/Ox otimizações (favorecer a velocidade)
+/favor:<blend|AMD64|INTEL64|ATOM> selecionar o processador para o qual otimizar, um de:
+    blend - uma combinação de otimizações para vários processadores x64 diferentes
+    AMD64 - processadores 64-bit AMD                                 
+    INTEL64 - processadores de arquitetura Intel(R)64                  
+    ATOM - Intel(R) Atom(TM) processors                           
+
+                             -GERAÇÃO DE CÓDIGO-
+
+/Gu[-] verificar funções distintas que têm endereços distintos
+/Gw[-] variáveis globais separadas para o conector
+/GF habilitar pool de cadeia de caracteres somente leitura
+/Gm[-] habilitar recompilação mínima    /Gy[-] separar funções para vinculador
+/GS[-] habilitar verificações de segurança
+/GR[-] habilitar C++ RTTI               /GX[-] habilitar C++ EH (igual a /EHsc)
+/guard:cf[-] habilita CFG (proteção de fluxo de controle)
+/guard:ehcont[-] habilitar metadados de continuidade de EH (CET)
+O /EHs habilita C++ EH (sem exceções de SEH)
+O /EHa habilita C++ EH (com exceções de SEH)
+O /EHc externo "C" retorna por padrão para nothrow
+O /EHr sempre gera verificações de término de tempo de execução noexcept
+/fp:<except[-]|fast|precise|strict> escolha o modelo de ponto flutuante:
+    except[-] - considere as exceções de ponto flutuante ao gerar código
+    fast - modelo de ponto flutuante "rápido"; os resultados são menos previsíveis
+    precise - modelo de ponto flutuante "preciso"; os resultados são previsíveis
+    strict - modelo de ponto flutuante "estrito" (implica em /fp:except)
+/Qfast_transcendentals gera FP em linha intrínseco mesmo com /fp:except
+/Qspectre[-] habilita mitigações para CVE 2017-5753
+/Qpar[-] habilita geração de código paralelo
+/Qpar-report:1 diagnóstico de paralelizador automático; indica loops paralelizados
+/Qpar-report:2 diagnóstico de paralelizador automático; indica loops não paralelizados
+/Qvec-report:1 diagnóstico de vetorizador automático; indica loops vetorizados
+/Qvec-report:2 diagnóstico de vetorizador automático; indica loops não vetorizados
+/GL[-] habilita a geração de código durante o tempo de vinculação
+/volatile:<iso|ms> escolhe o modelo volátil:
+    iso - Semântica de aquisição/liberação não garantida em acessos voláteis
+    ms  - Semântica de aquisição/liberação garantida em acessos voláteis
+/GA otimizar para Aplicativo do Windows 
+/Ge forçar verificação de pilha para todas as funções
+/Gs[núm] controlar chamadas de verificação de pilha
+/Gh habilitar chamada a função _penter  /GH habilitar chamada a função _pexit
+/GT gerar acessos de TLS de fibra segura
+/RTC1 Habilitar verificações rápidas (/RTCsu)
+/RTCc Converter para verificações de tipo menor
+/RTCs verificação de tempo de execução de Quadro de Pilha
+/RTCu Verificações de uso local não inicializado
+/clr[:opção] compilar para common language runtime, onde option é:
+    pure : produzir arquivo de saída IL-only (sem código executável nativo)
+    safe : produzir um arquivo de saída verificável IL-only
+    netcore : produza assemblies direcionando o runtime do .NET Core
+    noAssembly : não produzir um assembly
+    nostdlib : ignore o diretório do sistema do .NET Framework quando procurar por assemblies
+    nostdimport : não importe qualquer assemblies obrigatórios implicitamente
+    initialAppDomain : habilitar o comportamento do AppDomain inicial do Visual C++ 2002
+    implicitKeepAlive- : desative a emissão implícita do Sistema::GC::KeepAlive(isto)
+/fsanitize=address Habilitar o gerador de código do address sanitizer
+/homeparams Forçar parâmetros passados em registros a serem gravados na pilha
+/GZ Habilitar verificações de pilha (/RTCs)
+/Gv __vectorcall chamando conversão     
+/arch:<AVX|AVX2|AVX512> requisitos mínimos para arquitetura de CPU, um de:
+   AVX - habilitar o uso de instruções disponíveis com CPUs habilitadas para AVX
+   AVX2 - habilitar o uso de instruções disponíveis com CPUs habilitadas para AVX2
+   AVX512 - habilitar o uso de instruções disponíveis com CPUs habilitadas para AVX-512
+/QIntel-jcc-erratum habilitar as mitigações para a errata do Intel JCC
+/Qspectre-load Habilitar as mitigações de spectre para todas as instruções que carregam memória
+/Qspectre-load-cf Habilitar as mitigações de spectre para todas as instruções de fluxo de controle que carregam memória
+/fpcvt:<IA|BC> FP para compatibilidade de conversão de inteiro sem sinal
+   IA - resultados compatíveis com a instrução VCVTTSD2USI
+   BC - resultados compatíveis com o compilador do VS2017 e os anteriores
+
+                              -ARQUIVOS DE SAÍDA-
+
+/Fa[arquivo] nomear arquivo de listagem de assembly
+/FA[scu] configurar listagem de assembly/Fd[arquivo] nomear arquivo .PDB
+/Fe<arquivo> nomear arquivo executável  /Fm[arquivo] nomear arquivo de mapa
+/Fo<arquivo> nomear arquivo de objeto   
+/Fp<arquivo> nomear arquivo de cabeçalho pré-compilado
+/Fr[arquivo] nomear arquivo de navegador fonte
+/FR[arquivo] nomear arquivo .SBR estendido
+/Fi[arquivo] nomear arquivo pré-processado
+/Fd: <arquivo> nomear arquivo .PDB      /Fe: <arquivo> nomear arquivo executável
+/Fm: <arquivo> nomear arquivo de mapa   /Fo: <arquivo> nomear arquivo de objeto
+/Fp: <arquivo> nomear arquivo .PCH      
+/FR: <arquivo> nomear arquivo .SBR estendido
+/Fi: <arquivo> nomear arquivo pré-processado
+/Ft<dir> local dos arquivos de cabeçalho gerados para #import
+/doc[arquivo] processar comentários de documentação de XML e, opcionalmente, nomear o arquivo .xdc
+
+                              -PRÉ-PROCESSADOR-
+
+/AI<dir> adicionar ao caminho de pesquisa de assembly
+/FU<arquivo> using forçado de assembly/module
+/C não retirar comentários              /D<nome>{=|#}<texto> definir macro
+/E pré-processar para stdout            /EP pré-processar para stdout, sem #line
+/P pré-processar para arquivo           /Fx mesclar código injetado em arquivo
+/FI<arquivo> nomear arquivo de include forçado
+/U<nome> remover macro pré-definida     /u remover todas as macros pré-definidas
+/I<dir> adicionar a caminho de pesquisa de include
+/X ignorar "locais padrão"              
+/PH gerar #pragma file_hash ao pré-processar
+/PD imprimir todas as definições de macro
+
+                                -LINGUAGEM-
+
+/std:<c++14|c++17|c++latest> C++ versão padrão
+    c++14 - ISO/IEC 14882:2014 (padrão)
+    c++17 - ISO/IEC 14882:2017
+    c++latest - padrão do último rascunho (conjunto de recursos sujeito a alterações)
+/permissive[-] habilitar código não conforme para compilar (conjunto de recursos sujeito a alterações) (ativado por padrão)
+/Ze habilitar extensões (padrão)        /Za desabilitar extensões
+/ZW habilitar extensões de linguagem WinRT
+/Zs apenas verificação de sintaxe       
+/Zc:arg1[,arg2] conformidade de linguagem C++, em que argumentos podem ser:
+  forScope[-]           impor Standard C++ para regras de definição de escopo
+  wchar_t[-]            wchar_t é o tipo nativo, e não uma definição de tipo
+  auto[-]               impor o novo significado Standard C++ para automático
+  trigraphs[-]          habilitar gráficos triplos (desativado por padrão)
+  rvalueCast[-]         impor regras de conversão de tipos explícitos Standard C++
+  strictStrings[-]      desabilitar conversão de literal de cadeia em [char|wchar_t]*
+                        (desativado por padrão)
+  implicitNoexcept[-]   habilitar não exceção implícita em funções necessárias
+  threadSafeInit[-]     habilitar inicialização estática de local thread-safe
+  inline[-]             remover função ou dados sem referências se forem
+                        COMDAT ou tiverem apenas vínculo interno (desativada por padrão)
+  sizedDealloc[-]       habilitar funções de desalocação de tamanho global de C++14
+                        (ativado por padrão)
+  throwingNew[-]        supor novos lançamentos quando houver falha (desativado por padrão)
+  referenceBinding[-]   um temporário não será associado a uma referência lvalue non-const
+                        (desativado por padrão)
+  twoPhase-             desabilitar a pesquisa de nome de duas fases
+  ternary[-]            impor regras do C++11 para operador condicional (desativado por padrão)
+  noexceptTypes[-]      impor regras noexcept de C++17 (ativado por padrão em C++17 ou posterior)
+  alignedNew[-]         habilitar o alinhamento de C++17 de objetos alocados dinamicamente (ativado por padrão)
+  hiddenFriend[-]       impor regras de amigo oculto do C++ Padrão (implícitas por /permissive-)
+  externC[-]            aplicar regras de C++ Padrão para funções 'extern "C"' (implícita por /permissive-)
+  lambda[-]             melhor suporte para lambda usando o processador lambda mais recente (desabilitado por padrão)
+  tlsGuards[-]          gerar verificações de runtime para a inicialização da variável TLS (ativado por padrão)
+  zeroSizeArrayNew[-]   chamar membro novo/excluir para matrizes de objetos de tamanho 0 (ativado por padrão)
+/await habilita a extensão de funções recuperáveis
+/await:strict habilita o suporte de co-rotina C++20 padrão com versões de idioma anteriores
+/constexpr:depth<N>     limite de profundidade de recursão para avaliação de constexpr (padrão: 512)
+/constexpr:backtrace<N> mostrar N avaliações constexpr no diagnóstico (padrão: 10)
+/constexpr:steps<N>     finalizar avaliação de constexpr depois de N etapas (padrão: 100000)
+/Zi habilitar informações de depuração  
+/Z7 habilitar informações de depuração de estilo antigo
+/Zo[-] gerar informações de depuração mais avançadas para o código otimizado (ativado por padrão)
+/ZH:[MD5|SHA1|SHA_256] algoritmo de hash para cálculo de soma de verificação do arquivo nas informações de depuração (padrão: MD5)
+/Zp[n] empacotar structs em limite de n-bytes
+/Zl omitir nome de biblioteca padrão em .OBJ
+/vd{0|1|2} desabilitar/habilitar vtordisp
+/vm<x> tipo de ponteiros para membros   
+/std:<c11|c17> versão C padrão
+    c11 - ISO/IEC 9899:2011
+    c17 - ISO/IEC 9899:2018
+/ZI habilitar informações de depuração de Editar e Continuar
+/openmp habilitar extensões de linguagem OpenMP 2.0
+/openmp:experimental habilite extensões de linguagem OpenMP 2.0 e selecione extensões de linguagem OpenMP 3.0+
+Extensões da linguagem OpenMP /openmp:llvm que usam o runtime LLVM
+
+                              -MISCELÂNEA-
+
+@<file> arquivo de resposta de opções   
+/?, /help imprimir esta mensagem de ajuda
+/bigobj gerar formato de objeto estendido
+/c compilar apenas, não vincular        
+/errorReport: opção preterida. Relatar os erros internos do compilador à Microsoft
+    none - não enviar relatório                
+    prompt - solicitar para enviar relatório imediatamente
+    queue - no próximo logon de admin, solicitar para enviar relatório imediatamente (padrão)
+    send - enviar relatório automaticamente         
+/FC usar nomes de caminho completos em diagnósticos
+/H<núm> máximo comprimento de nome externo
+/J tipo de char padrão é unsigned       
+/MP[n] usar até 'n' processos para compilação
+/nologo suprimir mensagem de direitos autorais
+/showIncludes mostrar nomes de arquivos de include
+/Tc<arquivo de origem> compilar arquivo como .c
+/Tp<arquivo de origem> compilar arquivo como .cpp
+/TC compilar todos os arquivos como .c  /TP compilar todos os arquivos como .cpp
+/V<cadeia de caracteres> definir cadeia de caracteres de versão
+/Yc[arquivo] criar arquivo .PCH         
+/Yd colocar informações de depuração em todo .OBJ
+/Yl[sym] injetar referência de .PCH em biblioteca de depuração
+/Yu[arquivo] usar arquivo .PCH          /Y- desabilitar todas as opções de PCH
+/Zm<n> máxima alocação de memória (% do padrão)
+/FS força usar MSPDBSRV.EXE             
+/source-charset:<iana-nome>|.nnnn definir o conjunto de caracteres de origem
+/execution-charset:<iana-nome>|.nnnn definir o conjunto de caracteres de execução
+/utf-8 definir conjunto de caracteres de origem e execução para UTF-8
+/validate-charset[-] validar arquivos UTF-8 para usar apenas caracteres válidos
+/fastfail[-] habilitar modo fast-fail   
+/JMC[-] habilitar nativo apenas meu código
+/presetPadding[-] inicializar em zero o preenchimento para tipos de classe baseados em pilha
+/volatileMetadata[-] gera metadados em acessos de memória volátil
+
+                                -VINCULAÇÃO-
+
+/LD Criar .DLL                          /LDd Criar biblioteca de depuração .DLL
+/LN Criar um .netmodule                 /F<núm> definir tamanho da pilha
+/link [opções de vinculador e bibliotecas]
+/MD vincular com MSVCRT.LIB             /MT vincular com LIBCMT.LIB
+/MDd vincular com biblioteca de depuração MSVCRTD.LIB
+/MTd vincular com biblioteca de depuração LIBCMTD.LIB
+
+                              -CODE ANALYSIS-
+
+/analyze[-] Habilitar análise nativa    
+/analyze:quiet[-] Nenhum aviso para o console
+/analyze:log<nome> Avisos no arquivo    /analyze:autolog Gerar log em *.pftlog
+/analyze:autolog:ext<ext> Gerar log em *.<ext>
+/analyze:autolog- Nenhum arquivo de log /analyze:WX- Avisos, não fatais
+/analyze:stacksize<núm> Registro de ativação máximo
+/analyze:max_paths<núm> Máximo de caminhos
+/analyze:only Analisar, sem geração de código
+
+                              -DIAGNÓSTICO-
+
+/diagnostics:<args,...> controla o formato de mensagens de diagnóstico:
+             clássico - mantém o formato anterior
+             column[-] - imprime as informações da coluna
+             caret[-] - imprime a coluna e a linha de origem indicada
+/Wall habilitar todos os avisos         /w desabilitar todos os avisos
+/W<n> definir nível de aviso (padrão n=1)
+/Wv:xx[.yy[.zzzzz]] desabilitar avisos introduzidos após a versão xx.yy.zzzzz
+/WX tratar avisos como erros            /WL habilitar diagnósticos de uma linha
+/wd<n> desabilitar aviso n              /we<n> tratar aviso n como um erro
+/wo<n> emitir aviso n apenas uma vez    
+/w<l><n> definir nível de aviso 1-4 para n
+/external:I <path>      - localização de cabeçalhos externos
+/external:env:<var>     - variável de ambiente com localizações de cabeçalhos externos
+/external:anglebrackets - tratar todos os cabeçalhos incluídos por meio de <> como externos
+/external:W<n>          - nível de aviso para cabeçalhos externos
+/external:templates[-] - avaliar o nível de aviso na cadeia de instanciação do modelo
+/sdl habilitar componentes e avisos de segurança adicionais
+
+Detecting C compiler ABI info compiled with the following output:
+Change Dir: C:/Users/Gil Beirao/Documents/GitHub/playdate--data-over-sound/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):nmake -f Makefile /nologo cmTC_f8efd\fast && 	"C:\Program Files (x86)\Microsoft Visual Studio\2019\BuildTools\VC\Tools\MSVC\14.29.30133\bin\HostX64\x64\nmake.exe"  -f CMakeFiles\cmTC_f8efd.dir\build.make /nologo -L                  CMakeFiles\cmTC_f8efd.dir\build
+Building C object CMakeFiles/cmTC_f8efd.dir/CMakeCCompilerABI.c.obj
+	"C:\Program Files\CMake\bin\cmake.exe" -E cmake_cl_compile_depends --dep-file=CMakeFiles\cmTC_f8efd.dir\CMakeCCompilerABI.c.obj.d --working-dir="C:\Users\Gil Beirao\Documents\GitHub\playdate--data-over-sound\build\CMakeFiles\CMakeTmp" --filter-prefix="ObservaþÒo: incluindo arquivo: " -- C:\PROGRA~2\MICROS~4\2019\BUILDT~1\VC\Tools\MSVC\1429~1.301\bin\Hostx64\x64\cl.exe @C:\Users\GILBEI~1\AppData\Local\Temp\nm9DA3.tmp
+CMakeCCompilerABI.c
+Linking C executable cmTC_f8efd.exe
+	"C:\Program Files\CMake\bin\cmake.exe" -E vs_link_exe --intdir=CMakeFiles\cmTC_f8efd.dir --rc=C:\PROGRA~2\WI3CF2~1\10\bin\100190~1.0\x64\rc.exe --mt=C:\PROGRA~2\WI3CF2~1\10\bin\100190~1.0\x64\mt.exe --manifests -- C:\PROGRA~2\MICROS~4\2019\BUILDT~1\VC\Tools\MSVC\1429~1.301\bin\Hostx64\x64\link.exe /nologo @CMakeFiles\cmTC_f8efd.dir\objects1.rsp @C:\Users\GILBEI~1\AppData\Local\Temp\nm9DF3.tmp
+
+
+

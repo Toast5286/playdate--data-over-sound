@@ -1,0 +1,3 @@
+C:/Users/Gil Beirao/Documents/GitHub/playdate--data-over-sound/build/CMakeFiles/DataOverSound_V2.dir
+C:/Users/Gil Beirao/Documents/GitHub/playdate--data-over-sound/build/CMakeFiles/edit_cache.dir
+C:/Users/Gil Beirao/Documents/GitHub/playdate--data-over-sound/build/CMakeFiles/rebuild_cache.dir
