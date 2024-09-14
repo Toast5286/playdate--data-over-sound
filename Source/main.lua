@@ -16,6 +16,8 @@ local FreqArray = {baseFreq,2*baseFreq,3*baseFreq,4*baseFreq,5*baseFreq,6*baseFr
 local SampleFreq = 44100
 local samplePerChar = 1024
 
+local processing=0
+
 
 local SelectedButton = "Text" --Options: Text, Transmit, Receive 
 local keyboardOut = false
@@ -94,9 +96,12 @@ function pd.update()
     pd.graphics.drawText(MsgString, 10, 10)
     pd.graphics.drawText("Mode: "..SelectedButton.."\n(press A to activate and arrows to change)", 10, 195)
 
-    pd.sound.micinput.startListening()
-    local buffer = pd.sound.sample.new(1, pd.sound.kFormat16bitMono)
-    pd.sound.micinput.recordToSample(buffer, FFTProcess)
+    if processing == 0 then
+        processing = 1
+        pd.sound.micinput.startListening()
+        local buffer = pd.sound.sample.new(0.1, pd.sound.kFormat16bitMono)
+        pd.sound.micinput.recordToSample(buffer, FFTProcess)
+    end
 
 end
 
@@ -155,5 +160,5 @@ function FFTProcess(recording)
     fftlib.fft.free(FFTObj)
     local endTime = pd.getCurrentTimeMilliseconds()
     print(endTime-startTime)
-
+    processing = 0
 end
