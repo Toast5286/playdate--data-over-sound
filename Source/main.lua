@@ -94,6 +94,10 @@ function pd.update()
     pd.graphics.drawText(MsgString, 10, 10)
     pd.graphics.drawText("Mode: "..SelectedButton.."\n(press A to activate and arrows to change)", 10, 195)
 
+    pd.sound.micinput.startListening()
+    local buffer = pd.sound.sample.new(1, pd.sound.kFormat16bitMono)
+    pd.sound.micinput.recordToSample(buffer, FFTProcess)
+
 end
 
 --Run Encoder
@@ -113,6 +117,16 @@ function LetsDecode(recording)
         return
     end
 
+    local startTime = pd.getCurrentTimeMilliseconds()
+
+    local SampleObj = samplelib.samples.new(recording)
+    local FFTObj = fftlib.fft.new(SampleObj,0,1024/4)
+    fftlib.fft.runFFT(FFTObj)
+
+    local endTime = pd.getCurrentTimeMilliseconds()
+    print(endTime-startTime)
+
+    --[[
     local start,max = Sync(recording,3000,FreqArray,samplePerChar)
     local startInSeconds = SampleToTime(start,SampleFreq)
     if start >= 0 then
@@ -123,5 +137,23 @@ function LetsDecode(recording)
         end
     else
         MsgString = "Couldn't find the start of the message,\ncan you repeat it?"
+    end]]
+end
+
+
+function FFTProcess(recording)
+    pd.sound.micinput.stopListening()
+    if recording == nil then
+        return
     end
+
+    local startTime = pd.getCurrentTimeMilliseconds()
+
+    local SampleObj = samplelib.samples.new(recording)
+    local FFTObj = fftlib.fft.new(SampleObj,0,1024/4)
+    fftlib.fft.runFFT(FFTObj)
+    fftlib.fft.free(FFTObj)
+    local endTime = pd.getCurrentTimeMilliseconds()
+    print(endTime-startTime)
+
 end

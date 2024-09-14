@@ -24,7 +24,7 @@ function encodeString(SampleBuffer,str,FreqArray,Amp,samplePerChar)
 
     --Create the SampleObj to manipulate the samples
     local SampleObj = samplelib.samples.new(SampleBuffer)
-    local SampleFreq = samplelib.samples.gerSampleFreq(SampleObj)    --Samples per second
+    local SampleFreq = samplelib.samples.getSampleFreq(SampleObj)    --Samples per second
     samplelib.samples.syntheticData(SampleObj,-1,0,0,-1)    --Clear out old samples
 
     --Make sure we have enogh samples
@@ -83,7 +83,7 @@ function decodeString(sample,StartSample,threshold,FreqArray,samplePerChar)
 
     local SampleObj = samplelib.samples.new(sample)
     local length = samplelib.samples.getLength(SampleObj)
-    local SampleFreq = samplelib.samples.gerSampleFreq(SampleObj)
+    local SampleFreq = samplelib.samples.getSampleFreq(SampleObj)
 
     local BitArray = {}
     local AsciiInt = 0

@@ -18,7 +18,7 @@ static const lua_reg samplelib[] =
     { "syntheticData",  syntheticDataCreator},
 	{ "getSample",      getSample },
     { "getLength",	    getNumSample },
-	{ "gerSampleFreq",  getSampleFreq },
+	{ "getSampleFreq",  getSampleFreq },
     { "getSignalEnergy",  getSigEnergy },
 	{ NULL, NULL }
 };
@@ -35,7 +35,6 @@ void registerSamples(PlaydateAPI* playdate){
 }
 
 
-//Sampler-----------------------------------------------------
 /**
 * Function:     extract_samples
 * Arguments:    sample                  -playdate.sound.sample that we want to store
@@ -72,7 +71,6 @@ int extract_samples(lua_State* L) {
 
 }
 
-//Sampler-----------------------------------------------------
 /**
 * Function:     free_samples
 * Arguments:    s                  -samplelib.samples to free
@@ -89,7 +87,7 @@ int free_samples(lua_State* L){
 	return 0;
 }
 
-//Sampler-----------------------------------------------------
+
 /**
 * Function:     syntheticDataCreator
 * Arguments:    s                   -samplelib.samples to store the new data
@@ -102,7 +100,7 @@ int free_samples(lua_State* L){
 * Description:  Creates continuose of sinusoidal waves and stores there samples in object s
 **/
 int syntheticDataCreator(lua_State* L){
-    const float pi = (float) 3.14159265358979323846;
+    const float pi = (float) 3.14159265358979323846f;
 
     Samples* s = pd->lua->getArgObject(1, "samplelib.samples", NULL);
     float freq = pd->lua->getArgFloat(2);
@@ -125,14 +123,14 @@ int syntheticDataCreator(lua_State* L){
 
     }else{
         for(int i=startIdx;i<endIdx;i++){
-            val = Amp*cos(freq* (((float)i)/((float)s->SFreq)) * 2*pi);
+            val = Amp*sinf(freq* (((float)i)/((float)s->SFreq)) * 2*pi);
 	        s->data[i] += (short int)val;
         }
     }
 
 	return 0;
 }
-//Sampler-----------------------------------------------------
+
 /**
 * Function:     getSample
 * Arguments:    s                   -samplelib.samples to store the new data
@@ -159,7 +157,7 @@ int getSample(lua_State* L){
 	return 1;
 }
 
-//Sampler-----------------------------------------------------
+
 /**
 * Function:     getNumSample
 * Arguments:    s                   -samplelib.samples to store the new data
@@ -179,7 +177,6 @@ int getNumSample(lua_State* L){
 	return 1;
 }
 
-//Sampler-----------------------------------------------------
 /**
 * Function:     getSampleFreq
 * Arguments:    s                   -samplelib.samples to store the new data
@@ -199,7 +196,6 @@ int getSampleFreq(lua_State* L){
 	return 1;
 }
 
-//Sampler-----------------------------------------------------
 /**
 * Function:     getSigEnergy
 * Arguments:    s                   -samplelib.samples to store the new data
@@ -230,7 +226,7 @@ int getSigEnergy(lua_State* L){
     mean/=(endIdx-startIdx);
 
     for(int i=startIdx;i<endIdx;i++){
-        Energy+=pow((s->data[i]-mean),2);
+        Energy+=powf((s->data[i]-mean),2);
     }
     Energy/=(endIdx-startIdx);
 
