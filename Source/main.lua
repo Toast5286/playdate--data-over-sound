@@ -155,7 +155,7 @@ function FFTProcess(recording)
     local startTime = pd.getCurrentTimeMilliseconds()
 
     local SampleObj = samplelib.samples.new(recording)
-    local FFTObj = fftlib.fft.new(SampleObj,0,1024/4)
+    local FFTObj = fftlib.fft.new(SampleObj,0,1024/8)
     fftlib.fft.runFFT(FFTObj)
     fftlib.fft.free(FFTObj)
     local endTime = pd.getCurrentTimeMilliseconds()

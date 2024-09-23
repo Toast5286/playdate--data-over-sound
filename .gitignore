@@ -3,3 +3,5 @@ build
 .sentry-native
 DataOverSound_V2.pdx
 DataOverSound.pdx
+pdex.dll
+pdex.elf
