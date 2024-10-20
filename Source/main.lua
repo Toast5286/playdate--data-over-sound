@@ -11,10 +11,10 @@ local gfx <const> = pd.graphics
 
 _G.soundEffectPlayer = pd.sound.sampleplayer.new('soundEffect.wav')
 
-local baseFreq = 172.265625*4
-local FreqArray = {baseFreq,2*baseFreq,3*baseFreq,4*baseFreq,5*baseFreq,6*baseFreq,7*baseFreq,8*baseFreq}
+local baseFreq = 344.53125*3
+local FreqArray = {{baseFreq,2*baseFreq},{3*baseFreq,4*baseFreq},{5*baseFreq,6*baseFreq},{7*baseFreq,8*baseFreq},{9*baseFreq,10*baseFreq},{11*baseFreq,12*baseFreq},{13*baseFreq,14*baseFreq},{15*baseFreq,16*baseFreq}}
 local SampleFreq = 44100
-local samplePerChar = 1024
+local samplePerChar = 662*4
 
 local processing=0
 
@@ -45,8 +45,8 @@ function pd.AButtonDown()
     --Transmit (Encode)
     elseif SelectedButton == "Transmit" then
         --The encoder needs a sample buffer with size samplePerChar*(#MsgString+1) for all the characters and the CRC characters
-        local TimeNeeded = ((#MsgString+1)*samplePerChar*2/SampleFreq)
-
+        local TimeNeeded = ((#MsgString+1)*samplePerChar*2/SampleFreq)+0.01
+        
         pd.sound.micinput.startListening()
         local buffer = pd.sound.sample.new(TimeNeeded, pd.sound.kFormat16bitMono)
         pd.sound.micinput.recordToSample(buffer, LetsEncode)
@@ -93,15 +93,19 @@ end
 -- Display the graphics
 function pd.update()
     gfx.clear()
+    if SelectedButton == "Receive" then
+        if processing == 0 then
+            processing = 1
+            pd.sound.micinput.stopListening()
+            pd.sound.micinput.startListening()
+            local buffer = pd.sound.sample.new(0.001, pd.sound.kFormat16bitMono)
+            pd.sound.micinput.recordToSample(buffer, LetsDecode)
+        end
+    end
+
     pd.graphics.drawText(MsgString, 10, 10)
     pd.graphics.drawText("Mode: "..SelectedButton.."\n(press A to activate and arrows to change)", 10, 195)
 
-    if processing == 0 then
-        processing = 1
-        pd.sound.micinput.startListening()
-        local buffer = pd.sound.sample.new(0.1, pd.sound.kFormat16bitMono)
-        pd.sound.micinput.recordToSample(buffer, FFTProcess)
-    end
 
 end
 
@@ -112,7 +116,7 @@ function LetsEncode(recording)
         return
     end
 
-    encodeString(recording,MsgString,FreqArray,2000,samplePerChar)
+    encodeString(recording,MsgString,FreqArray,600,samplePerChar)
 end
 
 --Run Syncronizer and Decoder
@@ -123,14 +127,13 @@ function LetsDecode(recording)
     end
 
     local startTime = pd.getCurrentTimeMilliseconds()
-
-    local SampleObj = samplelib.samples.new(recording)
-    local FFTObj = fftlib.fft.new(SampleObj,0,1024/4)
-    fftlib.fft.runFFT(FFTObj)
+    local Msg = decodeString(recording,30,FreqArray,"")
 
     local endTime = pd.getCurrentTimeMilliseconds()
-    print(endTime-startTime)
-
+    --print(endTime-startTime)
+    MsgString = Msg
+    print(Msg)
+    processing = 0
     --[[
     local start,max = Sync(recording,3000,FreqArray,samplePerChar)
     local startInSeconds = SampleToTime(start,SampleFreq)
@@ -154,11 +157,8 @@ function FFTProcess(recording)
 
     local startTime = pd.getCurrentTimeMilliseconds()
 
-    local SampleObj = samplelib.samples.new(recording)
-    local FFTObj = fftlib.fft.new(SampleObj,0,1024/8)
-    fftlib.fft.runFFT(FFTObj)
-    fftlib.fft.free(FFTObj)
+    FFTAbsGraph(recording,20,20,360,160,0,0,20000)
+
     local endTime = pd.getCurrentTimeMilliseconds()
     print(endTime-startTime)
-    processing = 0
 end

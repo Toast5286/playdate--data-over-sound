@@ -23,13 +23,14 @@ local gfx <const> = pd.graphics
 * Description:  Displays a graph showing the results from the FFT of the sound sample
 **]]
 function FFTAbsGraph(sample,x,y,w,h,startSample,StartFreq,EndFreq)
+    gfx.clear()
     --Get samples
     local SampleObj = samplelib.samples.new(sample)
     local length = samplelib.samples.getLength(SampleObj)
 
 
     --Setup and Run FFT
-    local FFTObj = fftlib.fft.new(SampleObj,startSample,startSample+1024)
+    local FFTObj = fftlib.fft.new(SampleObj,startSample,startSample+128)
     fftlib.fft.runFFT(FFTObj)
 
     --Get Usefull information

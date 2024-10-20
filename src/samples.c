@@ -123,7 +123,7 @@ int syntheticDataCreator(lua_State* L){
 
     }else{
         for(int i=startIdx;i<endIdx;i++){
-            val = Amp*sinf(freq* (((float)i)/((float)s->SFreq)) * 2*pi);
+            val = Amp*sinf(freq* (((float)i)/((float)s->SFreq)) * 2*pi) * (0.54f - 0.46f * cosf(2 * pi * i / ((endIdx-startIdx) - 1)));
 	        s->data[i] += (short int)val;
         }
     }

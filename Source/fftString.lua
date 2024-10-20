@@ -24,7 +24,7 @@ function encodeString(SampleBuffer,str,FreqArray,Amp,samplePerChar)
 
     --Create the SampleObj to manipulate the samples
     local SampleObj = samplelib.samples.new(SampleBuffer)
-    local SampleFreq = samplelib.samples.getSampleFreq(SampleObj)    --Samples per second
+    local SampleFreq = 44100 --samplelib.samples.getSampleFreq(SampleObj)    --Samples per second
     samplelib.samples.syntheticData(SampleObj,-1,0,0,-1)    --Clear out old samples
 
     --Make sure we have enogh samples
@@ -44,7 +44,7 @@ function encodeString(SampleBuffer,str,FreqArray,Amp,samplePerChar)
     for i = 1, nChar do
         AsciiInt = string.byte(str,i)--We Encoding for each character 
         BitArray = {}
-        --Check bit by bit ans write it in the BitArray
+        --Check bit by bit and write it in the BitArray
         for j = 8,1,-1 do
             if (AsciiInt%2==1)then
                 BitArray[j]=1
@@ -79,52 +79,36 @@ end
 * Returns:      str                 -String containing the decoded message or "" if message had 1 or more errors
 * Description:  Decodes sound sample in to a string and checks if there was a error while receiving
 **]]
-function decodeString(sample,StartSample,threshold,FreqArray,samplePerChar)
+function decodeString(sample,threshold,FreqArray,PrevStr)
 
     local SampleObj = samplelib.samples.new(sample)
     local length = samplelib.samples.getLength(SampleObj)
-    local SampleFreq = samplelib.samples.getSampleFreq(SampleObj)
+    local SampleFreq = 44100
 
     local BitArray = {}
     local AsciiInt = 0
-    local strArray = {}
 
     --Decoding char in msg
-    for i=StartSample,length,samplePerChar*2 do
-        local BitArray = {}
-        --Decode 1 byte
-        AsciiInt = 0
-        BitArray = decodeByte(SampleObj,FreqArray,threshold,i,i+samplePerChar/2)
-
-        for j=1,#BitArray do
-            AsciiInt<<=1
-            if BitArray[j]==1 then
-                AsciiInt+=1
-            end
-        end
-
-
-        --Check if byte isnt "/0", meaning end of string
-        if AsciiInt==0 then
-            break
-        end
-        strArray[#strArray+1] = AsciiInt    --Add to array
-
-    end
+    --Decode 1 byte
+    BitArray = decodeByte(SampleObj,FreqArray,threshold,0,128)
     samplelib.samples.free(SampleObj)
-    --Writing down in string form
-    --Since ""already includes /0, we need to append from the beginning of the string,
-    --so we start from the end and work our way to the first character
-    local str = ""
-    for k=(#strArray-1),1,-1 do
-        str = string.char(strArray[k])..str
+    --BitArray to String
+    for j=1,#BitArray do
+        AsciiInt<<=1
+        if BitArray[j]==-1 then
+            return PrevStr
+        elseif BitArray[j]==1 then
+            AsciiInt+=1
+        end
+    end
+
+    --Check if byte isnt "/0", meaning end of string
+    if AsciiInt==0 then
+        return PrevStr
     end
     
-    --Check if the bits were correctly received
-    if CRCDecoder(str,strArray[#strArray]) == 1 then
-        print("Error in decodeString function: CRC was not correct.")
-        return ""
-    end
+    str = PrevStr..string.char(AsciiInt)
+    --TODO: Error correction code here
 
     return str
 end

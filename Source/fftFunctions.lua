@@ -94,7 +94,9 @@ function encodeByte(SampleObj,FreqArray,BitArray,Amp,StartSample,EndSample)
     --Apply a sinusoidal wave to represent the bit i with Frequency i
     for i = 1,NumBits do
         if BitArray[i] == 1 then
-            samplelib.samples.syntheticData(SampleObj,FreqArray[i],Amp,StartSample,EndSample) 
+            samplelib.samples.syntheticData(SampleObj,FreqArray[i][2],Amp,StartSample,EndSample) 
+        else
+            samplelib.samples.syntheticData(SampleObj,FreqArray[i][1],Amp,StartSample,EndSample) 
         end
     end
 
@@ -123,17 +125,21 @@ function decodeByte(SampleObj,FreqArray,threshold,StartSample,EndSample)
     fftlib.fft.runFFT(FFTObj)
     local SampleSize = fftlib.fft.getLength(FFTObj)
 
-    --Decoding bit in each frequency
+    --Decoding bit in each frequency pair
     for i =1,#FreqArray do
-        mag = fftlib.fft.getAbsFreq(FFTObj,FreqToIdx(FreqArray[i],SampleFreq,SampleSize))  --Get the magnitude
-        if mag > threshold then
-            BitArray[i] = 1
-        else
-            BitArray[i] = 0
-        end
+        mag0 = fftlib.fft.getAbsFreq(FFTObj,FreqToIdx(FreqArray[i][1],SampleFreq,SampleSize))  --Get the magnitude for bit = 0
+        mag1 = fftlib.fft.getAbsFreq(FFTObj,FreqToIdx(FreqArray[i][2],SampleFreq,SampleSize))  --Get the magnitude for bit = 1
 
+        if mag1 - mag0 > threshold then
+            BitArray[i] = 1
+        elseif mag0 - mag1 > threshold then
+            BitArray[i] = 0 
+        else
+            BitArray[i] = -1
+        end
     end
     fftlib.fft.free(FFTObj)
+
     return BitArray
 end
 
