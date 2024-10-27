@@ -33,8 +33,8 @@ function encodeString(SampleBuffer,str,FreqArray,Amp,samplePerChar)
         print("Error: Could not read SampleObj to get length")
         return 
     end
-    if length<(nChar*samplePerChar*2) then
-        print("Error: sample needs at least ",(nChar*samplePerChar*2/SampleFreq),". ",length/SampleFreq,"seconds where given.")
+    if length<(nChar*samplePerChar) then
+        print("Error: sample needs at least ",(nChar*samplePerChar/SampleFreq),". ",length/SampleFreq,"seconds where given.")
         return 
     end
 
@@ -55,7 +55,7 @@ function encodeString(SampleBuffer,str,FreqArray,Amp,samplePerChar)
         end
 
         --Encode character
-        encodeByte(SampleObj,FreqArray,BitArray,Amp,(2*i-1)*samplePerChar,2*i*samplePerChar)
+        encodeByte(SampleObj,FreqArray,BitArray,Amp,(i-1)*samplePerChar,i*samplePerChar)
 
     end
     --Visualization
@@ -95,7 +95,8 @@ function decodeString(sample,threshold,FreqArray,PrevStr)
     --BitArray to String
     for j=1,#BitArray do
         AsciiInt<<=1
-        if BitArray[j]==-1 then
+        if BitArray[j]<0 then
+            print(BitArray[j])
             return PrevStr
         elseif BitArray[j]==1 then
             AsciiInt+=1

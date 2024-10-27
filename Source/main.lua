@@ -11,10 +11,10 @@ local gfx <const> = pd.graphics
 
 _G.soundEffectPlayer = pd.sound.sampleplayer.new('soundEffect.wav')
 
-local baseFreq = 344.53125*3
-local FreqArray = {{baseFreq,2*baseFreq},{3*baseFreq,4*baseFreq},{5*baseFreq,6*baseFreq},{7*baseFreq,8*baseFreq},{9*baseFreq,10*baseFreq},{11*baseFreq,12*baseFreq},{13*baseFreq,14*baseFreq},{15*baseFreq,16*baseFreq}}
+local baseFreq = 344.53125
+local FreqArray = {{baseFreq,4*baseFreq},{7*baseFreq,10*baseFreq},{13*baseFreq,16*baseFreq},{19*baseFreq,22*baseFreq},{25*baseFreq,28*baseFreq},{31*baseFreq,34*baseFreq},{37*baseFreq,40*baseFreq},{43*baseFreq,46*baseFreq}}
 local SampleFreq = 44100
-local samplePerChar = 662*4
+local samplePerChar = 1470*2.5
 
 local processing=0
 
@@ -98,7 +98,7 @@ function pd.update()
             processing = 1
             pd.sound.micinput.stopListening()
             pd.sound.micinput.startListening()
-            local buffer = pd.sound.sample.new(0.001, pd.sound.kFormat16bitMono)
+            local buffer = pd.sound.sample.new(0.01, pd.sound.kFormat16bitMono)
             pd.sound.micinput.recordToSample(buffer, LetsDecode)
         end
     end
@@ -127,7 +127,7 @@ function LetsDecode(recording)
     end
 
     local startTime = pd.getCurrentTimeMilliseconds()
-    local Msg = decodeString(recording,30,FreqArray,"")
+    local Msg = decodeString(recording,10,FreqArray,"")
 
     local endTime = pd.getCurrentTimeMilliseconds()
     --print(endTime-startTime)

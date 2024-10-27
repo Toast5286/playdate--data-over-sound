@@ -135,7 +135,7 @@ function decodeByte(SampleObj,FreqArray,threshold,StartSample,EndSample)
         elseif mag0 - mag1 > threshold then
             BitArray[i] = 0 
         else
-            BitArray[i] = -1
+            BitArray[i] = -math.abs( mag0 - mag1 )
         end
     end
     fftlib.fft.free(FFTObj)
